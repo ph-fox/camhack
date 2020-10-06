@@ -3,8 +3,6 @@ trap 'printf "\n";stop' 2
 
 banner() {
 
-printf " \e[1;77m coded by github.com/abalesluke/camhack\e[0m \n"
-
 printf "\n"
 
 
